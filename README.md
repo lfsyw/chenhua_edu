@@ -57,13 +57,13 @@
 
 ### 9、Python3从入门到核心编程视频教程
 
-课程：暂未上线
+课程：http://www.ichenhua.cn/edu/lesson/10
 
 素材：python3-basic
 
 ### 10、Laravel5.6模块化实战项目开发系列课程之公共模块篇
 
-课程：暂未上线
+课程：http://www.ichenhua.cn/edu/lesson/9
 
 素材：larave5-module-basic
 
