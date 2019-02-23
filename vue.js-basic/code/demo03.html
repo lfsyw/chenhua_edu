@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{width: 400px; margin: 120px auto;}
+    .red{ color: red }
+    .blue{ color: blue; }
+    </style>
+</head>
+<body>
+    <div id="app" class="box">
+        <h2 :class="color">陈华编程学院</h2>
+        <select v-model="color">
+            <option value="red">红色</option>
+            <option value="blue">蓝色</option>
+        </select>
+
+        <hr>
+        <h2 :style="{background: color,color:'#FFF'}">ichenhua.cn</h2>
+
+        <hr>
+
+        <p class="red" v-if="bool">www.ichenhua.cn</p>
+        <p class="blue" v-show="bool">www.ichenhua.cn</p>
+
+        <hr>
+
+        <p v-once v-text="text"></p>
+        <p v-text="text"></p>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            color:'blue',
+            bool:true,
+            text:'www.ichenhua.cn'
+        }
+    });
+    </script>
+</body>
+</html>

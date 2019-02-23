@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{width: 600px; margin: 120px auto;}
+    </style>
+</head>
+<body>
+    <div id="app" class="box">
+        <ul>
+            <li v-for="val in news">{{val}}</li>
+        </ul>
+
+        <hr>
+
+        <ul>
+            <li v-for="(val,key) in news">
+                <span :style="{color:key==2?'red':''}">{{key}} -- {{val}}</span>
+            </li>
+        </ul>
+
+        <hr>
+
+        <ul>
+            <li v-for="i in 5">{{i}}</li>
+        </ul>
+
+        <ul>
+            <li v-for="i in 'abcd'">{{i}}</li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            news:[
+                '西媒：中国正朝世界最强军队迈进 与美军差距缩短',
+                '农村宅基地可以跨镇交易了 谁能买都咋买？',
+                '这个朝阳行业不但得到国家扶持 还急缺1700万人',
+                '被越来越多国家“嫌弃”后 这一大限正等待美元',
+                '住建部新规：住宅按套内面积算 告别买100平只得70平'
+            ]
+        }
+    });
+    </script>
+</body>
+</html>

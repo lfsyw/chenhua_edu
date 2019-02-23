@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{width: 400px; margin: 120px auto;}
+        </style>
+</head>
+<body>
+    
+
+    <div id="app" class="box">
+        <h1>{{msg}}</h1>
+        <h2 v-text="msg"></h2>
+        <input type="text" v-model="msg">
+
+        <hr>
+
+        <div v-html="html"></div>
+        <div v-text="html"></div>
+        <div>{{html}}</div>
+
+        <hr>
+
+        <a v-bind:href="href">陈华编程学院</a>
+        <a :href="href">陈华编程学院1</a>
+        
+        <hr>
+
+        <button type="button" v-on:click="hello();">点击我</button>
+        <button type="button" @click="hello();">点击我1</button>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                msg:'陈华学院',
+                html:"<img src='http://www.ichenhua.cn/themes/frontend/ichenhua/imgs/logo.png'>",
+                href:"http://www.ichenhua.cn"
+            },
+            methods:{
+                hello:function(){
+                    alert(2)
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
