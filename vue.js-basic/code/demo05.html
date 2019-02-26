@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{width: 400px; margin: 120px auto;}
+    </style>
+</head>
+<body>
+    <div id="app" class="box">
+        <h1>{{msg}}</h1>
+        <p>{{domain}}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            msg:'',
+            domain:''
+        },
+        created:function(){
+            this.msg="陈华编程学院";
+            this.domain="www.ichenhua.cn";
+        }
+    });
+    </script>
+</body>
+</html>
