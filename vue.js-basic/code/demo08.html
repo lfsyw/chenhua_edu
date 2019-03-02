@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container" id="app" style="margin-top:50px;">
+        <h1>响应式表格</h1>
+        <div style="margin:20px 0;">
+            <label v-for="(v,k) in columns">
+                <input type="checkbox" :value="k" v-model="selected_columns"> {{v}} &nbsp;&nbsp;
+            </label>
+        </div>
+        <table class="table table-bordered">
+            <tr>
+                <th v-for="(v,k) in columns" v-if="selected_columns.indexOf(k)!=-1">{{v}}</th>
+            </tr>
+            <tr v-for="n in news">
+                <td v-for="(v,k) in columns" v-if="selected_columns.indexOf(k)!=-1">{{n[k]}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+
+    <script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            columns:{
+                id:'ID',
+                title:'标题',
+                created_at:'时间'
+            },
+            selected_columns:['id','title'],
+            news:[
+                {
+                    id:'1',
+                    title:'相当于欧美非大洋洲总人口 为何春运不“轰动”了',
+                    created_at:'2019-10-10'
+                },
+                {
+                    id:'2',
+                    title:'日本人离不开的“中国制造”包括它 令很多人吃惊',
+                    created_at:'2019-11-10'
+                },
+                {
+                    id:'3',
+                    title:'西班牙科学家为何如此爱中国？西媒:中国允许犯错',
+                    created_at:'2019-12-10'
+                }
+            ]
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://sui3.taobao.org/dist/css/sui.css">
+
+    <style>
+        .box {
+            height: 500px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+
+        .box-menu {
+            width: 100%;
+            height: 40px;
+            position: absolute;
+            bottom: 0;
+            border-top: 1px solid #ccc;
+        }
+
+        .box-menu ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .box-menu ul.top-menu li {
+            width: 33.3%;
+            line-height: 40px;
+            float: left;
+            text-align: center;
+            border-right: 1px solid #ccc;
+            position: relative;
+        }
+
+        .box-menu ul.top-menu li .sub-menu {
+            width: 100%;
+            border: 1px solid #ccc;
+            position: absolute;
+            bottom: 40px;
+            display: none;
+        }
+
+        .box-menu ul.top-menu li .sub-menu li {
+            width: 100%;
+            border-bottom: 1px solid #ccc;
+            border-right: none;
+        }
+
+        .w150{
+            width:150px;
+        }
+
+        dl{
+            padding:20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        dl dt{ padding-bottom: 10px; }
+
+        dl dd{ margin-left:15px; padding-bottom: 10px; }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="app" style="padding:50px 100px;">
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="box">
+                    <div class="box-menu">
+                        <ul class="top-menu">
+                            <li>首页</li>
+                            <li>新闻
+                                <ul class="sub-menu">
+                                    <li>国内新闻</li>
+                                    <li>国际新闻</li>
+                                </ul>
+                            </li>
+                            <li>体育
+                                <ul class="sub-menu">
+                                    <li>篮球</li>
+                                    <li>足球</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8" style="padding-left:30px;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">菜单管理</h5>
+                    </div>
+                    <div class="panel-body form-inline">
+                        <dl>
+                            <dt><input type="text" class="form-control" value="首页"></dt>
+                        </dl>
+                        <dl>
+                            <dt>
+                                <input type="text" class="form-control" value="新闻">
+                                <button class="btn btn-success">添加子菜单</button>
+                                <button class="btn btn-danger">删除</button>
+                            </dt>
+                            <dd>
+                                |——
+                                <input type="text" class="form-control">
+                                <button class="btn btn-danger">删除</button>
+                            </dd>
+                            <dd>
+                                |——
+                                <input type="text" class="form-control">
+                                <button class="btn btn-danger">删除</button>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>新闻</dt>
+                            <dd>国内新闻</dd>
+                        </dl>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="submit" class="btn btn-primary">添加顶级菜单</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('ul.top-menu').children('li').hover(function () {
+                $('ul.sub-menu').hide();
+                $(this).find('ul.sub-menu').show()
+            }, function () {
+                $('ul.sub-menu').hide();
+            })
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    
+</body>
+
+</html>

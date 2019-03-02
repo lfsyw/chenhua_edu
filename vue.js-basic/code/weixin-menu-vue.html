@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://sui3.taobao.org/dist/css/sui.css">
+
+    <style>
+        .box {
+            height: 500px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+
+        .box-menu {
+            width: 100%;
+            height: 40px;
+            position: absolute;
+            bottom: 0;
+            border-top: 1px solid #ccc;
+        }
+
+        .box-menu ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .box-menu ul.top-menu li {
+            width: 33.3%;
+            line-height: 40px;
+            float: left;
+            text-align: center;
+            border-right: 1px solid #ccc;
+            position: relative;
+        }
+
+        .box-menu ul.top-menu li .sub-menu {
+            width: 100%;
+            border: 1px solid #ccc;
+            position: absolute;
+            bottom: 40px;
+            display: none;
+        }
+
+        .box-menu ul.top-menu li .sub-menu li {
+            width: 100%;
+            border-bottom: 1px solid #ccc;
+            border-right: none;
+        }
+
+        .w150{
+            width:150px;
+        }
+
+        dl{
+            padding:20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        dl dt{ padding-bottom: 10px; }
+
+        dl dd{ margin-left:15px; padding-bottom: 10px; }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="app" style="padding:50px 100px;">
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="box">
+                    <div class="box-menu">
+                        <ul class="top-menu">
+                            <li v-for="item in items">{{item.title}}
+                                <ul class="sub-menu" v-if="item.submenu">
+                                    <li v-for="menu in item.submenu">{{menu.title}}</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8" style="padding-left:30px;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">菜单管理</h5>
+                    </div>
+                    <div class="panel-body form-inline">
+                        <dl v-for="(item,key) in items">
+                            <dt>
+                                <input type="text" class="form-control" v-model="item.title">
+                                <button class="btn btn-success" @click="addSubMenu(item)">添加子菜单</button>
+                                <button class="btn btn-danger" @click="delTopMenu(key)">删除</button>
+                            </dt>
+                            <template v-if="item.submenu">
+                                <dd v-for="(menu,key) in item.submenu">
+                                    |——
+                                    <input type="text" class="form-control" v-model="menu.title">
+                                    <button class="btn btn-danger" @click="delSubMenu(item.submenu,key)">删除</button>
+                                </dd>
+                            </template>
+                        </dl>
+                    </div>
+                    <div class="panel-footer">
+                        <button class="btn btn-primary" @click="addTopMenu()">添加顶级菜单</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('ul.top-menu').children('li').hover(function () {
+                $('ul.sub-menu').hide();
+                $(this).find('ul.sub-menu').show()
+            }, function () {
+                $('ul.sub-menu').hide();
+            })
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                items: [{
+                        title: '首页',
+                        submenu: []
+                    },
+                    {
+                        title: '新闻',
+                        submenu: [{
+                            title: '国内新闻',
+                        }]
+                    },
+                    {
+                        title: '体育',
+                        submenu: [{
+                            title: '篮球',
+                        }]
+                    }
+                ]
+            },
+            methods: {
+                addTopMenu: function () {
+                    if(this.items.length==3){
+                        alert('最多只能添加三个顶级菜单.');
+                        return;
+                    }
+                    this.items.push({title:'',submenu:[]});
+                },
+                delTopMenu: function (key) {
+                    this.items.splice(key,1);
+                },
+                addSubMenu: function (item) {
+                    if(item.submenu.length==5){
+                        alert('最多只能添加五个子菜单.');
+                        return;
+                    }
+                    item.submenu.push({title:''});
+                },
+                delSubMenu: function (submenu,key) {
+                    submenu.splice(key,1);
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
